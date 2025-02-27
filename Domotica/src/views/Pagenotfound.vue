@@ -3,7 +3,7 @@
 </script>
 
 <template>
-    <h1>Management Page!</h1>
+    <h1>Notfound Page!</h1>
 </template>
 
 <style lang="scss">
