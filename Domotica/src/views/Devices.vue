@@ -1,6 +1,6 @@
 <script setup lang="ts">    
-    import DeviceComponent from '@/components/DeviceComponent.vue';
-import { Device, Environment } from '@/models/devices';
+    import EnvironmentComponent from '@/components/EnvironmentComponent.vue';
+    import { Device, Environment } from '@/models/devices';
     import { reactive, ref } from 'vue';
 
     const environments: Array<Environment> = reactive([]);
@@ -8,7 +8,7 @@ import { Device, Environment } from '@/models/devices';
     const ar: Device = reactive(new Device());
     ar.name = 'Ar condicionado';
     ar.color = '#3266a8';
-    ar.icon = 'mode_fan';
+    ar.icon = 'heat_pump';
     ar.state = true;
 
     const tv: Device = reactive(new Device());
@@ -30,24 +30,27 @@ import { Device, Environment } from '@/models/devices';
     const sala: Environment = reactive(new Environment());
     sala.name = 'Sala';
     sala.devices = [ar,tv,iluminacao,tomada];
-    //sala.devices.push(ar);
-    //sala.devices.push(tv);
-    //sala.devices.push(iluminacao);
+   
+
+    const cafeteira: Device = reactive(new Device());
+    cafeteira.name = 'Cafeteira Wi-fi';
+    cafeteira.icon = 'coffee_maker'
+
+    const cozinha: Environment = reactive(new Environment());
+    cozinha.name = 'Cozinha';
+    cozinha.devices = [cafeteira];
  
     environments.push(sala);  
-    environments.push(sala);  
+    environments.push(cozinha);  
     
   </script>
 
-<template>
+<template>    
     <main class="flex flex-column text-center justify-content-center align-items-center">
-        <h1>Devices page!!!!</h1>
+        <h1>Seus Dispositivos 🚥</h1>
         <section class="environments flex flex-column border-round-sm">
             <div v-for="(environment, env_id) in environments" :key="env_id">
-                <h3>{{ environment.name }}</h3>
-                <div v-for="(device, dev_id) in environment.devices" :key="dev_id">
-                    <DeviceComponent :device="device" />
-                </div>
+                <EnvironmentComponent :environment="environment"/>
             </div>
         </section>
     </main>
