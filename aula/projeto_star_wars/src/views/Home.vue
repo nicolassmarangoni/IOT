@@ -1,4 +1,3 @@
-// src/views/Home.vue
 <template>
   <div class="home">
     <h1>Star Wars: Personagens Favoritos</h1>
@@ -66,6 +65,14 @@ export default defineComponent({
         }
         p {
           font-size: 0.9rem;
+        }
+
+        img {
+          width: 100%; /* Faz com que a imagem ocupe toda a largura disponível */
+          height: 150px; /* Define uma altura fixa para a imagem */
+          object-fit: cover; /* Faz com que a imagem se ajuste sem distorcer */
+          border-radius: 8px;
+          margin-top: 1rem;
         }
       }
     }
